@@ -397,28 +397,6 @@ section:nth-of-type(even) h2::after {
 
 /* Responsive Tweaks */
 @media (max-width: 768px) {
-   section h2::before,
-  section h2::after {
-    left: 10px !important;  /* Bring left line close to the text */
-    right: 10px !important; /* Bring right line close to the text */
-    width: 4px;             /* Slimmer lines on smaller screens */
-  }
-
-  /* Override original positions with one selector each */
-  section h2::before {
-    left: 10px;
-    right: auto;
-  }
-
-  section h2::after {
-    right: 10px;
-    left: auto;
-  }
-
-
-
-
-  
   .split-hero {
     flex-direction: column;
     text-align: center;
@@ -440,4 +418,21 @@ section:nth-of-type(even) h2::after {
     max-width: 100%;
     height: auto;
   }
+
+
+
+
+
+  section h2::before {
+  left: 10px !important;
+  right: auto !important;
+  width: 4px !important;
+}
+
+section h2::after {
+  right: 10px !important;
+  left: auto !important;
+  width: 4px !important;
+}
+
 }
