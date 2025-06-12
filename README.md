@@ -30,7 +30,7 @@ Welcome to my personal portfolio website — a digital reflection of my journey 
 
 ## 🚀 Live Site
 
-👉 [View My Portfolio]((https://trishab004.github.io/trisha-portfolio/))  
+👉 [View My Portfolio](https://trishab004.github.io/trisha-portfolio/) 
 
 ---
 
