@@ -441,34 +441,35 @@ section h2::after {
 
 
 
+
+
+
 @media (prefers-color-scheme: dark) {
   body {
-    background-color: #f6e290bb !important;
+    background-color: #efce4a;
+    animation: colorFade 16s ease-in-out infinite !important;
     color: #333 !important;
   }
 
   section, .connect, .contact-section, .project-card {
     background: rgba(255, 255, 255, 0.7) !important;
+    backdrop-filter: blur(10px);
     color: #333 !important;
   }
 
   .connect h2, 
   .contact-section h2, 
   .visitor-count {
-    color: #333 !important;
+    color: #42300e !important;
   }
 
   input, textarea {
-    background-color: #fff !important;
+    background-color: #ffffff !important;
     color: #000 !important;
   }
 
-  .contact-form button {
-    color: #fff !important;
-  }
-
   .social-link {
-    color: #333 !important;
+    color: #42300e !important;
   }
 
   .social-link:hover {
