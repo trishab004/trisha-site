@@ -40,3 +40,35 @@ Welcome to my personal portfolio website — a digital reflection of my journey 
 ├── style.css # Styling & layout
 ├── pics/ # All images and assets
 └── README.md # This file 🌷
+
+
+---
+
+## 📝 Contact
+
+Feel free to reach out for collaborations, internships, design gigs, or just a friendly chat:
+
+- 📧 trishsocials19@gmail.com
+- 💼 [LinkedIn](https://www.linkedin.com/in/trisha-bej-504bba271)
+- 📸 [Instagram](https://www.instagram.com/trisha.b_04)
+
+---
+
+## 🌈 Acknowledgements
+
+Special thanks to:
+- [FormSubmit](https://formsubmit.co) for hassle-free form submissions
+- Font Awesome for the icons
+- You, for visiting and reading 💜
+
+---
+
+## 📌 License
+
+This project is for **personal academic and career showcasing purposes**.  
+You may **fork or use structure for inspiration**, but please credit where due. ✨
+
+---
+
+Stay inspired, stay passionate,  
+**Trisha Bej** 🌸
