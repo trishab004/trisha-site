@@ -444,35 +444,3 @@ section h2::after {
 
 
 
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: #efce4a;
-    animation: colorFade 16s ease-in-out infinite !important;
-    color: #333 !important;
-  }
-
-  section, .connect, .contact-section, .project-card {
-    background: rgba(255, 255, 255, 0.7) !important;
-    backdrop-filter: blur(10px);
-    color: #333 !important;
-  }
-
-  .connect h2, 
-  .contact-section h2, 
-  .visitor-count {
-    color: #42300e !important;
-  }
-
-  input, textarea {
-    background-color: #ffffff !important;
-    color: #000 !important;
-  }
-
-  .social-link {
-    color: #42300e !important;
-  }
-
-  .social-link:hover {
-    color: #00b4d8 !important;
-  }
-}
