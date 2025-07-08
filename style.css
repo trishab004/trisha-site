@@ -525,3 +525,59 @@ section h2::after {
     gap: 10px;
   }
 }
+
+.chat-icon {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #a66bff;
+  color: white;
+  padding: 12px 16px;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  z-index: 1001;
+}
+
+.chat-box {
+  display: none;
+  flex-direction: column;
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 300px;
+  max-height: 500px;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+  z-index: 1001;
+  overflow: hidden;
+}
+
+.chat-header {
+  background: #a66bff;
+  color: white;
+  padding: 12px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.chat-messages {
+  flex: 1;
+  padding: 12px;
+  overflow-y: auto;
+  font-size: 14px;
+  text-align: left;
+}
+
+.chat-box input {
+  border: none;
+  padding: 10px;
+  width: 100%;
+  font-size: 14px;
+  border-top: 1px solid #ddd;
+  outline: none;
+}
+
