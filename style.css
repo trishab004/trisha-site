@@ -656,6 +656,17 @@ body.dark-mode .glass-nav a:hover {
   color: #a66bff;
 }
 
+/* Make all section text white in dark mode, just like project-card */
+body.dark-mode section,
+body.dark-mode section p,
+body.dark-mode section h2,
+body.dark-mode section li,
+body.dark-mode .about-text p,
+body.dark-mode .dual-box p,
+body.dark-mode .dual-box ul li {
+  color: #ffffff !important;
+}
+
 /* 🌙 Dark Mode Tweaks */
 
 /*
