@@ -618,7 +618,7 @@ body.dark-mode section {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   box-shadow: 0 12px 30px rgba(255, 255, 255, 0.05);
-  color: #f1f1f1 !important; /* general text color inside sections */
+  color: #ffffff !important; /* general text color inside sections */
 }
 
 body.dark-mode .project-card {
