@@ -588,14 +588,14 @@ section h2::after {
 
 .theme-toggle {
   position: fixed;
-  top: 100px; /* So it doesn’t clash with chatbot */
-  right: 30px;
-  z-index: 9999;
+  top: 100px;
+  right: 20px;
+  z-index: 1001;
   background: linear-gradient(135deg, #ffe1fa, #c1e3ff);
   color: #444;
   border: none;
-  padding: 16px 18px;
-  font-size: 24px;
+  padding: 16px 20px;
+  font-size: 28px;
   border-radius: 50%;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
   cursor: pointer;
@@ -607,24 +607,27 @@ section h2::after {
   box-shadow: 0 10px 25px rgba(166, 107, 255, 0.4);
 }
 
+
+
 body.dark-mode {
-  background-color: #121212;
-  color: #f1f1f1;
+  filter: brightness(0.9) contrast(1.1) saturate(0.95);
+  color: #eaeaea;
 }
 
 body.dark-mode section {
-  background: rgba(255, 255, 255, 0.05);
-  box-shadow: 0 12px 30px rgba(255, 255, 255, 0.05);
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
 }
 
 body.dark-mode .project-card {
-  background: rgba(255, 255, 255, 0.08);
-  color: #f1f1f1;
+  background: rgba(255, 255, 255, 0.05);
+  color: #fafafa;
 }
 
 body.dark-mode .connect,
 body.dark-mode .contact-section {
-  background-color: #1a1a1a;
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 body.dark-mode .visitor-count {
@@ -632,6 +635,6 @@ body.dark-mode .visitor-count {
 }
 
 body.dark-mode .theme-toggle {
-  background: linear-gradient(135deg, #3f3f3f, #121212);
+  background: linear-gradient(135deg, #2e2e2e, #1f1f1f);
   color: white;
 }
