@@ -298,7 +298,7 @@
 
   
 
-  <!-- Add this after your main content, before </body> -->
+<!-- Add this after your main content, before </body> -->
 <div class="chatbot-button" onclick="toggleChat()">💬</div>
 
 <div class="chatbot-container" id="chatBox">
@@ -317,8 +317,8 @@
     right: 25px;
     background: linear-gradient(135deg, #f9a4f9, #a66bff);
     color: white;
-    font-size: 26px;
-    padding: 14px;
+    font-size: 30px;
+    padding: 18px;
     border-radius: 50%;
     cursor: pointer;
     box-shadow: 0 8px 16px rgba(0,0,0,0.2);
@@ -329,8 +329,8 @@
     position: fixed;
     bottom: 100px;
     right: 25px;
-    width: 360px;
-    max-height: 520px;
+    width: 460px;
+    max-height: 600px;
     background: rgba(255,255,255,0.95);
     backdrop-filter: blur(8px);
     border-radius: 20px;
@@ -344,10 +344,10 @@
   .chatbot-header {
     background: #a66bff;
     color: white;
-    padding: 16px;
+    padding: 20px;
     text-align: center;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 22px;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
   }
@@ -356,7 +356,7 @@
     flex: 1;
     padding: 15px;
     overflow-y: auto;
-    font-size: 14px;
+    font-size: 16px;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -371,11 +371,11 @@
 
   .chatbot-input-area input {
     flex: 1;
-    padding: 10px;
+    padding: 12px;
     border-radius: 12px;
     border: 1px solid #ccc;
     outline: none;
-    font-size: 14px;
+    font-size: 15px;
   }
 
   .chatbot-input-area button {
@@ -383,7 +383,7 @@
     color: white;
     border: none;
     border-radius: 12px;
-    padding: 10px 12px;
+    padding: 12px 14px;
     font-size: 16px;
     cursor: pointer;
   }
@@ -392,25 +392,49 @@
     align-self: flex-end;
     background: #d8b4f8;
     color: #222;
-    padding: 10px 14px;
+    padding: 14px 18px;
     border-radius: 14px 14px 0 14px;
-    max-width: 75%;
-    font-size: 14px;
+    max-width: 85%;
+    font-size: 15px;
   }
 
   .chatbot-message.bot {
     align-self: flex-start;
     background: #fceaff;
     color: #222;
-    padding: 10px 14px;
+    padding: 14px 18px;
     border-radius: 14px 14px 14px 0;
-    max-width: 75%;
-    font-size: 14px;
+    max-width: 85%;
+    font-size: 15px;
   }
 
   .typing {
     font-style: italic;
     color: #999;
+  }
+
+  @media (max-width: 768px) {
+    .chatbot-container {
+      width: 90vw;
+      height: 90vh;
+      bottom: 80px;
+      right: 5%;
+      max-height: unset;
+      border-radius: 16px;
+    }
+    .chatbot-header {
+      font-size: 20px;
+      padding: 18px;
+    }
+    .chatbot-input-area input {
+      font-size: 14px;
+    }
+    .chatbot-input-area button {
+      font-size: 15px;
+    }
+    .chatbot-message.user, .chatbot-message.bot {
+      font-size: 14px;
+    }
   }
 </style>
 
@@ -468,6 +492,7 @@
     }
   }
 </script>
+
 
 </body>
 </html>
