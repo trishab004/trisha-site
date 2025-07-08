@@ -205,15 +205,17 @@
 
   
 <!-- Floating Chat Button -->
+  <!--
 <div class="chat-icon" onclick="toggleChat()">💬</div>
-
+-->
 <!-- Chatbox -->
+  <!--
 <div class="chat-box" id="chatBox">
   <div class="chat-header">Ask Trisha 🤖</div>
   <div class="chat-messages" id="chatMessages"></div>
   <input type="text" id="userInput" placeholder="Ask me anything..." onkeypress="handleKey(event)">
 </div>
-
+-->
   <!-- Sparkle Cursor -->
   <canvas id="star-canvas"></canvas>
 
@@ -293,55 +295,178 @@
   </script>
 
 
-  <script>
-function toggleChat() {
-  const box = document.getElementById('chatBox');
-  box.style.display = (box.style.display === 'flex') ? 'none' : 'flex';
-}
 
-function handleKey(event) {
-  if (event.key === 'Enter') sendMessage();
-}
+  
 
-async function sendMessage() {
-  const input = document.getElementById('userInput');
-  const msg = input.value.trim();
-  if (!msg) return;
+  <!-- Add this after your main content, before </body> -->
+<div class="chatbot-button" onclick="toggleChat()">💬</div>
 
-  const messages = document.getElementById('chatMessages');
-  messages.innerHTML += `<div><strong>You:</strong> ${msg}</div>`;
-  input.value = '';
+<div class="chatbot-container" id="chatBox">
+  <div class="chatbot-header">Trisha AI Assistant 🌸</div>
+  <div class="chatbot-messages" id="chatMessages"></div>
+  <div class="chatbot-input-area">
+    <input type="text" id="userInput" placeholder="Ask me anything..." onkeypress="handleKey(event)">
+    <button onclick="sendMessage()">✉️</button>
+  </div>
+</div>
 
-  messages.innerHTML += `<div id="typing"><em>Typing...</em></div>`;
-  messages.scrollTop = messages.scrollHeight;
+<style>
+  .chatbot-button {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: linear-gradient(135deg, #f9a4f9, #a66bff);
+    color: white;
+    font-size: 26px;
+    padding: 14px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    z-index: 1001;
+  }
 
-  const response = await getTrishaReply(msg);
-  document.getElementById('typing').remove();
-  messages.innerHTML += `<div><strong>Trisha:</strong> ${response}</div>`;
-  messages.scrollTop = messages.scrollHeight;
-}
+  .chatbot-container {
+    position: fixed;
+    bottom: 100px;
+    right: 25px;
+    width: 360px;
+    max-height: 520px;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(8px);
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 1001;
+  }
 
-async function getTrishaReply(userMsg) {
-  const apiKey = 'YOUR_API_KEY'; // 🔐 Replace with your Google AI Studio key
-  const prompt = `
-You are Trisha Bej, a portfolio assistant. Answer the following as Trisha would, using the portfolio information:
-"${userMsg}"
-`;
+  .chatbot-header {
+    background: #a66bff;
+    color: white;
+    padding: 16px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+  }
 
-  const res = await fetch("https://generativelanguage.googleapis.com/v1beta/models/chat-bison-001:generateMessage?key=" + apiKey, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      prompt: {
-        messages: [{ author: "user", content: prompt }]
-      },
-      temperature: 0.7
-    })
-  });
+  .chatbot-messages {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
 
-  const data = await res.json();
-  return data?.candidates?.[0]?.content || "Sorry, I couldn’t generate a response.";
-}
+  .chatbot-input-area {
+    display: flex;
+    border-top: 1px solid #ccc;
+    padding: 10px;
+    gap: 5px;
+  }
+
+  .chatbot-input-area input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 14px;
+  }
+
+  .chatbot-input-area button {
+    background: #a66bff;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 12px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .chatbot-message.user {
+    align-self: flex-end;
+    background: #d8b4f8;
+    color: #222;
+    padding: 10px 14px;
+    border-radius: 14px 14px 0 14px;
+    max-width: 75%;
+    font-size: 14px;
+  }
+
+  .chatbot-message.bot {
+    align-self: flex-start;
+    background: #fceaff;
+    color: #222;
+    padding: 10px 14px;
+    border-radius: 14px 14px 14px 0;
+    max-width: 75%;
+    font-size: 14px;
+  }
+
+  .typing {
+    font-style: italic;
+    color: #999;
+  }
+</style>
+
+<script>
+  function toggleChat() {
+    const box = document.getElementById('chatBox');
+    box.style.display = (box.style.display === 'flex') ? 'none' : 'flex';
+  }
+
+  function handleKey(event) {
+    if (event.key === 'Enter') sendMessage();
+  }
+
+  async function sendMessage() {
+    const input = document.getElementById('userInput');
+    const msg = input.value.trim();
+    if (!msg) return;
+
+    const messages = document.getElementById('chatMessages');
+    messages.innerHTML += `<div class='chatbot-message user'>${msg}</div>`;
+    input.value = '';
+
+    const typingDiv = document.createElement('div');
+    typingDiv.className = 'typing';
+    typingDiv.textContent = 'Typing...';
+    messages.appendChild(typingDiv);
+    messages.scrollTop = messages.scrollHeight;
+
+    const response = await getTrishaReply(msg);
+    typingDiv.remove();
+    messages.innerHTML += `<div class='chatbot-message bot'>${response}</div>`;
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  async function getTrishaReply(userMsg) {
+    const apiKey = 'YOUR_GOOGLE_API_KEY_HERE'; // Replace with your key
+    const prompt = `You are Trisha Bej, an AI assistant representing your portfolio. Respond warmly, smartly, and clearly based on Trisha's skills, projects, and achievements. The user asked: ${userMsg}`;
+
+    try {
+      const res = await fetch("https://generativelanguage.googleapis.com/v1beta/models/chat-bison-001:generateMessage?key=" + apiKey, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          prompt: {
+            messages: [{ author: "user", content: prompt }]
+          },
+          temperature: 0.7
+        })
+      });
+
+      const data = await res.json();
+      return data?.candidates?.[0]?.content || "Sorry, I'm not sure about that yet!";
+    } catch (error) {
+      return "Oops, network error. Try again later!";
+    }
+  }
 </script>
 
 </body>
