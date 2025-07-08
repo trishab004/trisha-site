@@ -655,3 +655,18 @@ body.dark-mode .glass-nav a:hover {
   color: #a66bff;
 }
 
+/* 🌙 Force white font color for important content in dark mode */
+body.dark-mode .about-text p,
+body.dark-mode .dual-box p,
+body.dark-mode .dual-box ul li,
+body.dark-mode .project-card h3,
+body.dark-mode .project-card p,
+body.dark-mode section p,
+body.dark-mode section li {
+  color: #ffffff !important;
+}
+
+/* 👋 Keep "Thanks for visiting" message black even in dark mode */
+body.dark-mode .visitor-count {
+  color: #000000 !important;
+}
