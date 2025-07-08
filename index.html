@@ -9,11 +9,7 @@
 </head>
 <body>
 
-  <!-- 🌗 Theme Toggle Button -->
-<button id="themeToggle" class="theme-toggle" aria-label="Toggle Theme">🌙</button>
-
-
-  <!-- Hero Section -->
+   <!-- Hero Section -->
   <section class="hero split-hero">
     <div class="hero-left">
       <img src="hero[bright].jpg" alt="My Photo">
@@ -302,6 +298,8 @@
 
   
 
+  
+
 <!-- Add this after your main content, before </body> -->
 <div class="chatbot-button" onclick="toggleChat()">💬</div>
 
@@ -499,11 +497,15 @@
 
 
 
-  <script>
+
+
+  <!-- 🌗 Theme Toggle Button -->
+<button id="themeToggle" class="theme-toggle" aria-label="Toggle Theme">🌙</button>
+<script>
   const toggleBtn = document.getElementById('themeToggle');
   const body = document.body;
 
-  // Check saved theme
+  // Load saved theme
   if (localStorage.getItem('theme') === 'dark') {
     body.classList.add('dark-mode');
     toggleBtn.textContent = '☀️';
@@ -516,6 +518,7 @@
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
   });
 </script>
+
 
 </body>
 </html>
