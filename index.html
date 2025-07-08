@@ -18,7 +18,7 @@
       <h1>Trisha Bej</h1>
       <p>AI Enthusiast | Designer | Developer | Data Analyst</p>
       <p>💭Dreamer in Code & Cosmos💭</p>
-      <p class="location"><i class="fas fa-map-marker-alt"></i>📍 Kolkata, West Bengal</p>
+      <p class="location"><i class="fas fa-map-marker-alt"></i> Kolkata, West Bengal</p>
     </div>
   </section>
 
@@ -203,6 +203,17 @@
 
   <p class="visitor-count">Thanks for visiting!🌟</p>
 
+  
+<!-- Floating Chat Button -->
+<div class="chat-icon" onclick="toggleChat()">💬</div>
+
+<!-- Chatbox -->
+<div class="chat-box" id="chatBox">
+  <div class="chat-header">Ask Trisha 🤖</div>
+  <div class="chat-messages" id="chatMessages"></div>
+  <input type="text" id="userInput" placeholder="Ask me anything..." onkeypress="handleKey(event)">
+</div>
+
   <!-- Sparkle Cursor -->
   <canvas id="star-canvas"></canvas>
 
@@ -280,5 +291,58 @@
       });
     });
   </script>
+
+
+  <script>
+function toggleChat() {
+  const box = document.getElementById('chatBox');
+  box.style.display = (box.style.display === 'flex') ? 'none' : 'flex';
+}
+
+function handleKey(event) {
+  if (event.key === 'Enter') sendMessage();
+}
+
+async function sendMessage() {
+  const input = document.getElementById('userInput');
+  const msg = input.value.trim();
+  if (!msg) return;
+
+  const messages = document.getElementById('chatMessages');
+  messages.innerHTML += `<div><strong>You:</strong> ${msg}</div>`;
+  input.value = '';
+
+  messages.innerHTML += `<div id="typing"><em>Typing...</em></div>`;
+  messages.scrollTop = messages.scrollHeight;
+
+  const response = await getTrishaReply(msg);
+  document.getElementById('typing').remove();
+  messages.innerHTML += `<div><strong>Trisha:</strong> ${response}</div>`;
+  messages.scrollTop = messages.scrollHeight;
+}
+
+async function getTrishaReply(userMsg) {
+  const apiKey = 'YOUR_API_KEY'; // 🔐 Replace with your Google AI Studio key
+  const prompt = `
+You are Trisha Bej, a portfolio assistant. Answer the following as Trisha would, using the portfolio information:
+"${userMsg}"
+`;
+
+  const res = await fetch("https://generativelanguage.googleapis.com/v1beta/models/chat-bison-001:generateMessage?key=" + apiKey, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      prompt: {
+        messages: [{ author: "user", content: prompt }]
+      },
+      temperature: 0.7
+    })
+  });
+
+  const data = await res.json();
+  return data?.candidates?.[0]?.content || "Sorry, I couldn’t generate a response.";
+}
+</script>
+
 </body>
 </html>
