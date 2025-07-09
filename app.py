@@ -8,6 +8,11 @@ CORS(app)  # Allow cross-origin (your GitHub site to talk to this backend)
 
 GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY")  # Pull from Render secrets
 
+@app.route('/')
+def home():
+    return "Trisha's AI Backend is Running! 💡"
+
+
 @app.route('/chat', methods=['POST'])
 def chat():
     data = request.get_json()
