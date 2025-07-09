@@ -440,6 +440,9 @@
   }
 </style>
 
+
+
+  <!--
 <script>
   function toggleChat() {
     const box = document.getElementById('chatBox');
@@ -472,7 +475,7 @@
   }
 
   async function getTrishaReply(userMsg) {
-    const apiKey = ''; // Replace with your key
+    const apiKey = ''; 
     const prompt = `You are Trisha Bej, an AI assistant representing your portfolio. Respond warmly, smartly, and clearly based on Trisha's skills, projects, and achievements. The user asked: ${userMsg}`;
 
     try {
@@ -495,9 +498,55 @@
   }
 </script>
 
+-->
 
+<!-- 👇 Place your chatbot JS code block here -->
+<script>
+  function toggleChat() {
+    const box = document.getElementById('chatBox');
+    box.style.display = (box.style.display === 'flex') ? 'none' : 'flex';
+  }
 
+  function handleKey(event) {
+    if (event.key === 'Enter') sendMessage();
+  }
 
+  async function sendMessage() {
+    const input = document.getElementById('userInput');
+    const msg = input.value.trim();
+    if (!msg) return;
+
+    const messages = document.getElementById('chatMessages');
+    messages.innerHTML += `<div class='chatbot-message user'>${msg}</div>`;
+    input.value = '';
+
+    const typingDiv = document.createElement('div');
+    typingDiv.className = 'typing';
+    typingDiv.textContent = 'Typing...';
+    messages.appendChild(typingDiv);
+    messages.scrollTop = messages.scrollHeight;
+
+    const response = await getTrishaReply(msg);
+    typingDiv.remove();
+    messages.innerHTML += `<div class='chatbot-message bot'>${response}</div>`;
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  async function getTrishaReply(userMsg) {
+    try {
+      const res = await fetch("https://your-render-url.onrender.com/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: userMsg })
+      });
+
+      const data = await res.json();
+      return data.reply;
+    } catch (error) {
+      return "Oops, something went wrong. Try again later!";
+    }
+  }
+</script>
 
   <!-- 🌗 Theme Toggle Button -->
 <button id="themeToggle" class="theme-toggle" aria-label="Toggle Theme">🌙</button>
