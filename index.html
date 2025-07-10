@@ -534,7 +534,7 @@
 
   async function getTrishaReply(userMsg) {
     try {
-      const res = await fetch("https://trisha-site.onrender.com", {
+      const res = await fetch("https://trisha-site.onrender.com/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: userMsg })
