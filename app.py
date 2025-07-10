@@ -22,7 +22,9 @@ def chat():
 
         prompt = f"You are Trisha Bej, an AI assistant representing your portfolio. Respond warmly, smartly, and clearly based on Trisha's skills, projects, and achievements. The user asked: {user_msg}"
 
-        url = f"https://generativelanguage.googleapis.com/v1beta/models/chat-bison-001:generateMessage?key={GOOGLE_API_KEY}"
+       url = f"https://generativelanguage.googleapis.com/v1beta1/models/chat-bison-001:generateMessage?key={GOOGLE_API_KEY}"
+
+
         print("🔐 Using API URL:", url)
 
         response = requests.post(
