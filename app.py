@@ -4,6 +4,66 @@ import os
 from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
+
+GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY")
+
+@app.route('/')
+def home():
+    return "Trisha's Gemini AI Backend is Running! 🌟"
+
+@app.route('/chat', methods=['POST'])
+def chat():
+    try:
+        data = request.get_json()
+        user_msg = data.get("message")
+        print("📩 Received Message:", user_msg)
+
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent"
+        headers = {
+            "Content-Type": "application/json",
+            "X-goog-api-key": GOOGLE_API_KEY
+        }
+        payload = {
+            "contents": [
+                {
+                    "parts": [
+                        {
+                            "text": f"You are Trisha Bej, an AI assistant representing your portfolio. Respond warmly and smartly. The user asked: {user_msg}"
+                        }
+                    ]
+                }
+            ]
+        }
+
+        print("🔐 Sending request to:", url)
+        response = requests.post(url, headers=headers, json=payload)
+
+        print("📦 Response Code:", response.status_code)
+        print("📨 Raw Response:", response.text)
+
+        if response.status_code == 200:
+            content = response.json()
+            reply = content.get("candidates", [{}])[0].get("content", {}).get("parts", [{}])[0].get("text", "Sorry, couldn't reply!")
+            return jsonify({"reply": reply})
+        else:
+            return jsonify({"reply": "Oops! Something went wrong on the Gemini side."}), 500
+
+    except Exception as e:
+        print("❌ Exception:", str(e))
+        return jsonify({"reply": "Oops! Backend error occurred."}), 500
+
+
+
+
+
+'''
+from flask import Flask, request, jsonify
+import requests
+import os
+from flask_cors import CORS
+
+app = Flask(__name__)
 CORS(app)  # Allow cross-origin (your GitHub site to talk to this backend)
 
 GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY")  # Pull from Render secrets
@@ -49,6 +109,7 @@ def chat():
     except Exception as e:
         print("🔥 SERVER ERROR:", e)
         return jsonify({"reply": f"Exception occurred: {str(e)}"}), 500
+        '''
 
 '''
 @app.route('/chat', methods=['POST'])
